@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fuzzy Charms by Gleawi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      font-family: "Quicksand", sans-serif;
+    }
+    h1,
+    h2,
+    h3 {
+      font-family: "Dancing Script", cursive;
+    }
+    .page {
+      display: none;
+    }
+    .page.active {
+      display: block;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-pink-50 to-yellow-50 font-quicksand">
+  <!-- Navigation -->
+  <nav
+    class="bg-gradient-to-r from-pink-300 via-yellow-300 to-pink-300 shadow-lg sticky top-0 z-10"
+  >
+    <div
+      class="container mx-auto px-4 py-4 flex justify-between items-center"
+    >
+      <a
+        href="#"
+        id="homeLink"
+        class="text-white text-xl font-semibold hover:text-yellow-100 transition"
+        ><i class="fas fa-home text-yellow-200 mr-1"></i>Home</a
+      >
+      <a
+        href="#"
+        id="feedbackLink"
+        class="text-white text-xl font-semibold hover:text-yellow-100 transition"
+        ><i class="fas fa-comments text-yellow-200 mr-1"></i>Feedbacks</a
+      >
+    </div>
+  </nav>
+
+  <!-- Home Page -->
+  <div id="homePage" class="page active">
+    <!-- Header -->
+    <header
+      class="bg-gradient-to-r from-pink-300 via-yellow-300 to-pink-300 text-white py-8"
+    >
+      <div class="container mx-auto text-center">
+        <h1 class="text-5xl font-bold mb-2">
+          <i class="fas fa-heart text-yellow-200 mr-2"></i>Fuzzy Charms by Gleawi
+        </h1>
+        <p class="mt-2 text-lg"></p>
+      </div>
+    </header>
+
+    <!-- Products Section -->
+    
+
+    <!-- Feedback Form -->
+    <section id="feedback" class="py-12 bg-white rounded-tl-3xl rounded-tr-3xl border-t-8 border-yellow-300">
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-semibold text-center mb-10 text-pink-700">
+          Share Your Feedback
+        </h2>
+        <form
+          id="feedbackForm"
+          class="max-w-md mx-auto bg-pink-50 p-8 rounded-2xl shadow-xl border border-pink-300"
+        >
+          <div class="mb-6">
+            <label
+              for="name"
+              class="block text-sm font-medium text-yellow-700 mb-2"
+              ><i class="fas fa-user text-pink-500"></i> Name (optional)</label
+            >
+            <input
+              type="text"
+              id="name"
+              class="mt-1 block w-full px-4 py-3 border border-pink-300 rounded-full shadow-sm focus:outline-none focus:ring-yellow-400 focus:border-yellow-400 bg-white"
+              placeholder="Your name"
+            />
+          </div>
+          <div class="mb-6">
+            <label
+              for="comment"
+              class="block text-sm font-medium text-yellow-700 mb-2"
+              ><i class="fas fa-comment-heart text-pink-500"></i> Your Comment</label
+            >
+            <textarea
+              id="comment"
+              rows="5"
+              class="mt-1 block w-full px-4 py-3 border border-pink-300 rounded-lg shadow-sm focus:outline-none focus:ring-yellow-400 focus:border-yellow-400 bg-white"
+              required
+              placeholder="Leave your thoughts..."
+            ></textarea>
+          </div>
+          <div class="mb-6">
+            <label
+              for="photo"
+              class="block text-sm font-medium text-yellow-700 mb-2"
+              ><i class="fas fa-camera text-pink-500"></i> Add a Photo (optional)</label
+            >
+            <input
+              type="file"
+              id="photo"
+              accept="image/*"
+              class="mt-1 block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-yellow-100 file:text-pink-700 hover:file:bg-yellow-200"
+            />
+          </div>
+          <button
+            type="submit"
+            class="w-full bg-gradient-to-r from-pink-500 via-yellow-400 to-pink-500 text-white py-3 px-6 rounded-full hover:from-pink-600 hover:via-yellow-500 hover:to-pink-600 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-semibold transform hover:scale-105 transition-transform"
+          >
+            Send <i class="fas fa-magic"></i>
+          </button>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <!-- Feedback Page -->
+  <div id="feedbackPage" class="page">
+    <header
+      class="bg-gradient-to-r from-pink-300 via-yellow-300 to-pink-300 text-white py-8"
+    >
+      <div class="container mx-auto text-center">
+        <h1 class="text-5xl font-bold mb-2">
+          <i class="fas fa-comments text-yellow-200 mr-2"></i>Customer Feedbacks
+        </h1>
+        <p class="mt-2 text-lg">See what our customer's are saying!</p>
+      </div>
+    </header>
+    <section class="py-12 bg-gradient-to-b from-white to-yellow-50">
+      <div class="container mx-auto px-4">
+        <div id="feedbacks" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Feedbacks will be appended here -->
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- JavaScript for Page Switching and Feedback Handling -->
+  <script>
+    // Function to show a page
+    function showPage(pageId) {
+      document.querySelectorAll(".page").forEach((page) =>
+        page.classList.remove("active")
+      );
+      document.getElementById(pageId).classList.add("active");
+    }
+
+    // Navigation links
+    document.getElementById("homeLink").addEventListener("click", function (e) {
+      e.preventDefault();
+      showPage("homePage");
+    });
+    document
+      .getElementById("feedbackLink")
+      .addEventListener("click", function (e) {
+        e.preventDefault();
+        showPage("feedbackPage");
+      });
+
+    // Utility: Load feedbacks from localStorage
+    function loadFeedbacks() {
+      const feedbacksJSON = localStorage.getItem("keychainFeedbacks");
+      if (!feedbacksJSON) return [];
+      try {
+        return JSON.parse(feedbacksJSON);
+      } catch {
+        return [];
+      }
+    }
+
+    // Utility: Save feedbacks to localStorage
+    function saveFeedbacks(feedbacks) {
+      localStorage.setItem("keychainFeedbacks", JSON.stringify(feedbacks));
+    }
+
+    // Render all feedbacks to the feedback container
+    function renderFeedbacks() {
+      const feedbackContainer = document.getElementById("feedbacks");
+      feedbackContainer.innerHTML = ""; // Clear existing
+
+      const feedbacks = loadFeedbacks();
+
+      feedbacks.forEach(({ name, comment, photoDataUrl }) => {
+        const feedbackDiv = document.createElement("div");
+        feedbackDiv.className =
+          "bg-white rounded-2xl shadow-xl p-6 border border-pink-300 transform hover:scale-105 transition-transform";
+
+        let photoElement = "";
+        if (photoDataUrl) {
+          photoElement = `<img src="${photoDataUrl}" alt="Uploaded photo by ${name}, showcasing a delightful personal image shared with keychain feedback" class="w-full h-64 object-cover rounded-full mb-4 border-4 border-yellow-300" />`;
+        }
+
+        feedbackDiv.innerHTML = `
+          <h4 class="font-semibold text-lg text-pink-700 mb-3 flex items-center">
+            <i class="fas fa-star text-yellow-400 mr-2"></i>${name}
+          </h4>
+          ${photoElement}
+          <p class="text-gray-700 mt-3 italic">${comment.replace(
+            /\n/g,
+            "<br>"
+          )}</p>
+        `;
+
+        feedbackContainer.appendChild(feedbackDiv);
+      });
+    }
+
+    // Convert file to base64 data URL
+    function fileToDataUrl(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = () => reject(new Error("Failed to read file"));
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // Feedback form submission
+    document
+      .getElementById("feedbackForm")
+      .addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const nameInput = document.getElementById("name");
+        const commentInput = document.getElementById("comment");
+        const photoInput = document.getElementById("photo");
+
+        const name = nameInput.value.trim() || "Anonymous Fairy";
+        const comment = commentInput.value.trim();
+        const photoFile = photoInput.files[0];
+
+        let photoDataUrl = "";
+        if (photoFile) {
+          try {
+            photoDataUrl = await fileToDataUrl(photoFile);
+          } catch (err) {
+            alert("Failed to read photo file.");
+            return;
+          }
+        }
+
+        // Load existing feedbacks
+        const feedbacks = loadFeedbacks();
+
+        // Add new feedback
+        feedbacks.push({ name, comment, photoDataUrl });
+
+        // Save updated feedbacks
+        saveFeedbacks(feedbacks);
+
+        // Render updated feedbacks
+        renderFeedbacks();
+
+        // Reset form
+        event.target.reset();
+
+        // Navigate to feedback page after submission
+        showPage("feedbackPage");
+      });
+
+    // Initialize to home page and render feedbacks on load
+    showPage("homePage");
+    renderFeedbacks();
+  </script>
+</body>
+</html>
